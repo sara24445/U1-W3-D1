@@ -32,8 +32,8 @@ console.log(arrayDiNumeriCasuali)
 /* ESERCIZIO 3 (filter)
   Scrivi una funzione per ricavare solamente i valori PARI da un array composto da soli valori numerici
 */
-function estraiValoriPari(arrayNumeri) {
-  return arrayNumeri.filter((num) => num % 2 === 0)
+function estraiValoriPari(arrayDiNumeri) {
+  return arrayDiNumeri.filter((num) => num % 2 === 0)
 }
 const arrayDiNumeri = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 const valoriPari = estraiValoriPari(arrayDiNumeri)
@@ -50,32 +50,32 @@ function sommaArray(arrayNumeri) {
   })
   return somma
 }
-const arrayDiNumeri = [1, 2, 3, 4, 5]
-const risultatoSomma = sommaArray(arrayDiNumeri)
+const arrayNumeri = [1, 2, 3, 4, 5]
+const risultatoSomma = sommaArray(arrayNumeri)
 console.log(risultatoSomma)
 
 /* ESERCIZIO 5 (reduce)
   Scrivi una funzione per sommare i numeri contenuti in un array
 */
-function sommaArray(arrayNumeri) {
-  return arrayNumeri.reduce(
+function sommaArray(arrayNumbers) {
+  return arrayNumbers.reduce(
     (accumulatore, numeroCorrente) => accumulatore + numeroCorrente,
     0
   )
 }
-const arrayDiNumeri = [1, 2, 3, 4, 5]
-const risultatoSomma = sommaArray(arrayDiNumeri)
-console.log(risultatoSomma)
+const arrayNumbers = [1, 2, 3, 4, 5]
+const risultatoSum = sommaArray(arrayNumbers)
+console.log(risultatoSum)
 
 /* ESERCIZIO 6 (map)
   Scrivi una funzione che, dato un array di soli numeri e un numero n come parametri, ritorni un secondo array con tutti i valori del precedente incrementati di n
 */
-function incrementaArray(arrayNumeri, n) {
-  return arrayNumeri.map((numero) => numero + n)
+function incrementaArray(arrayOfNum, n) {
+  return arrayOfNum.map((numero) => numero + n)
 }
-const arrayDiNumeri = [1, 2, 3, 4, 5]
+const arrayOfNum = [1, 2, 3, 4, 5]
 const incremento = 2
-const risultatoIncremento = incrementaArray(arrayDiNumeri, incremento)
+const risultatoIncremento = incrementaArray(arrayOfNum, incremento)
 
 console.log(risultatoIncremento)
 
@@ -223,14 +223,37 @@ const movies = [
 /* ESERCIZIO 9 (forEach)
   Scrivi una funzione per trovare il film più vecchio nell'array fornito.
 */
+function trovaFilmPiuVecchio(movies) {
+  let filmPiuVecchio = movies[0]
+
+  movies.forEach((movie) => {
+    if (parseInt(movie.Year) < parseInt(filmPiuVecchio.Year)) {
+      filmPiuVecchio = movie
+    }
+  })
+
+  return filmPiuVecchio
+}
+const filmVecchio = trovaFilmPiuVecchio(movies)
+console.log(filmVecchio)
 
 /* ESERCIZIO 10
   Scrivi una funzione per ottenere il numero di film contenuti nell'array fornito.
 */
+function contaFilm(movies) {
+  return movies.length
+}
+const numeroDiFilm = contaFilm(movies)
+console.log(numeroDiFilm)
 
 /* ESERCIZIO 11 (map)
   Scrivi una funzione per creare un array con solamente i titoli dei film contenuti nell'array fornito.
 */
+function estraiTitoli(movies) {
+  return movies.map((movie) => movie.Title)
+}
+const titoliFilm = estraiTitoli(movies)
+console.log(titoliFilm)
 
 /* ESERCIZIO 12 (filter)
   Scrivi una funzione per ottenere dall'array fornito solamente i film usciti nel millennio corrente.
